@@ -108,7 +108,7 @@ public class TrangChuUser extends AppCompatActivity implements Adapter_Category_
         edt_searchfood = findViewById(R.id.edt_searchfood);
         edt_searchfood.setFocusable(false);
         edt_searchfood.setOnClickListener(v->{
-            Intent intent = new Intent(this, TimKiemFoodUser.class);
+            Intent intent = new Intent(this, TimKiemUser.class);
             Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
             startActivity(intent, bundle);
         });

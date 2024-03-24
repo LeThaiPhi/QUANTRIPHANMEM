@@ -116,7 +116,7 @@ public class DangKy extends AppCompatActivity {
                                         }
                                     });
                         } else {
-                            Toast.makeText(DangKy.this, "Người dùng đã đăng ký thành công!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DangKy.this, "Đăng ký không thành công!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

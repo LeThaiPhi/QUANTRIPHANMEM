@@ -91,16 +91,6 @@ public class Adapter_Detailed_Invoice_Admin extends RecyclerView.Adapter<View_Ho
                 }
             });
 
-//            tv_phone.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View view) {
-//                    Intent i = new Intent(Intent.ACTION_CALL);
-//                    i.setData(Uri.parse("tel:"+hoaDonChiTietAdmin.getPhone()));
-//                    v.getContext().startActivity(i);
-//                    return false;
-//                }
-//            });
-
             dialog.show();
         });
 

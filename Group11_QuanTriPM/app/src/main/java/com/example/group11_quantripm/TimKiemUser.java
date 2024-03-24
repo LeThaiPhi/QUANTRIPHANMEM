@@ -5,16 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.group11_quantripm.adapter.Adapter_Food_Admin;
 import com.example.group11_quantripm.adapter.Adapter_Food_User;
 import com.example.group11_quantripm.model.SanPham;
 import com.google.firebase.database.DataSnapshot;
@@ -24,34 +21,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class FoodList extends AppCompatActivity{
+public class TimKiemUser extends AppCompatActivity {
 
     private List<SanPham> sanPhamList;
     private Adapter_Food_User adapter;
     private RecyclerView recyclerView;
     private SanPham sanPham;
-    private TextView tv_nameCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_list);
+        setContentView(R.layout.activity_tim_kiem_user);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_foodlist);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_search);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        tv_nameCategory = findViewById(R.id.tv_nameCategory);
+        recyclerView = findViewById(R.id.rcv_searchlist);
+        recyclerView.setVisibility(View.INVISIBLE);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("bundle");
-        String category = bundle.getString("nameCategory");
-        tv_nameCategory.setText(""+category+" List");
-        recyclerView = findViewById(R.id.rcv_food);
         sanPhamList = new ArrayList<>();
         adapter = new Adapter_Food_User(sanPhamList);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -62,11 +53,8 @@ public class FoodList extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     sanPham = dataSnapshot.getValue(SanPham.class);
-                    if (sanPham.getCategory().equals(category)) {
-                        sanPhamList.add(sanPham);
-                    }
+                    sanPhamList.add(sanPham);
                 }
-                Collections.reverse(sanPhamList);
                 adapter.notifyDataSetChanged();
                 recyclerView.setAdapter(adapter);
 
@@ -74,10 +62,39 @@ public class FoodList extends AppCompatActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(FoodList.this, "Lấy danh sách không thành công!", Toast.LENGTH_LONG).show();
+                Toast.makeText(TimKiemUser.this, "Lấy danh sách không thành công!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        EditText edt_searchFood = findViewById(R.id.edt_searchfood);
+
+        edt_searchFood.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                recyclerView.setVisibility(View.VISIBLE);
+                filter(editable.toString());
             }
         });
     }
 
+    private void filter(String text) {
+        ArrayList<SanPham> filteredList = new ArrayList<>();
+        for (SanPham sanPham: sanPhamList){
+            if (sanPham.getName_product().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(sanPham);
+            }
+        }
+        adapter.filterList(filteredList);
+    }
 
 }

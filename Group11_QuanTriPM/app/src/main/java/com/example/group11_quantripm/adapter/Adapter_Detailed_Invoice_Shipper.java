@@ -27,10 +27,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Adapter_Detailed_Invoice_Chef extends RecyclerView.Adapter<View_Holder_Detailed_Invoice_Admin> {
+public class Adapter_Detailed_Invoice_Shipper extends RecyclerView.Adapter<View_Holder_Detailed_Invoice_Admin> {
     private List<HoaDonChiTietAdmin> hoaDonChiTietAdminList;
 
-    public Adapter_Detailed_Invoice_Chef(List<HoaDonChiTietAdmin> hoaDonChiTietAdminList) {
+    public Adapter_Detailed_Invoice_Shipper(List<HoaDonChiTietAdmin> hoaDonChiTietAdminList) {
         this.hoaDonChiTietAdminList = hoaDonChiTietAdminList;
     }
 

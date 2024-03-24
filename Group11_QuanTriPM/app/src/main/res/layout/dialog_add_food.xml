@@ -8,7 +8,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thêm món"
+        android:text="Thêm sản phẩm"
         android:gravity="center"
         android:textSize="25dp"
         android:padding="10dp"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="Thông tin món ăn"
+        android:text="Thông tin sản phẩm"
         android:textColor="#2E2E2E"
         android:textSize="20dp" />
 
@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/border"
-        android:hint="Tên món ăn"
+        android:hint="Tên sản phẩm"
         android:padding="15dp"
         android:textColorHint="#2E2E2E" />
 
