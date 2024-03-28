@@ -58,7 +58,7 @@
             android:name=".GioiThieuUser"
             android:exported="false" />
         <activity
-            android:name=".TimKiemFoodUser"
+            android:name=".TimKiemUser"
             android:exported="false" />
         <activity
             android:name=".XacNhanPass_Email"

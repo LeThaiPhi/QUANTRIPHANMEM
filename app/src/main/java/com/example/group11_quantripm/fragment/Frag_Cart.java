@@ -144,7 +144,7 @@ public class Frag_Cart extends Fragment implements Adapter_Receipt_User.Callback
                                 hoaDonList.clear();
                                 adapter.notifyDataSetChanged();
                                 sum =0;
-                                Toast.makeText(getContext(), "Đặt món thành công!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Đặt hàng thành công!", Toast.LENGTH_LONG).show();
                             }
                         }
                     });

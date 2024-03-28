@@ -80,6 +80,11 @@ public class DangNhap extends AppCompatActivity {
             edt_pass.requestFocus();
             return;
         }
+        if (password.length() >12) {
+            edt_pass.setError("Độ dài mật khẩu tối đa phải là 12 ký tự!");
+            edt_pass.requestFocus();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
