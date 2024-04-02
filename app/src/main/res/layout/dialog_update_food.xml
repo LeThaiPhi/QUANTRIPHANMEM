@@ -30,7 +30,7 @@
         android:id="@+id/edt_nameFoodUpdate"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:hint="Tên sản phẩm"
         android:textColorHint="#2E2E2E"
         android:background="@drawable/border"
@@ -41,7 +41,7 @@
         android:id="@+id/edt_priceFoodUpdate"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:hint="Giá sản phẩm"
         android:textColorHint="#2E2E2E"
         android:background="@drawable/border"
@@ -60,11 +60,37 @@
         android:id="@+id/edt_noteFoodUpdate"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:hint="Ghi chú "
         android:textColorHint="#2E2E2E"
         android:background="@drawable/border"
         android:padding="15dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_time"
+            android:layout_width="158dp"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:hint="Ngày"
+            android:padding="15dp"
+            android:textColorHint="#2E2E2E" />
+
+        <EditText
+            android:id="@+id/edt_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/border"
+            android:hint="Số lượng"
+            android:padding="15dp"
+            android:textColorHint="#2E2E2E" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -108,7 +134,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Lưu"
-        android:textColor="#fff"
         android:layout_marginBottom="30dp"
         android:background="@drawable/border"/>
 </LinearLayout>

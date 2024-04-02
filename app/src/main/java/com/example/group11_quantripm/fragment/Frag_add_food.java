@@ -47,6 +47,8 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
     private EditText edt_nameFood, edt_nameFoodUpdate;
     private EditText edt_priceFood;
     private EditText edt_noteFood;
+    private EditText edt_time;
+    private EditText edt_quantity;
     private Spinner spn_category;
     private ImageView img_food, img_foodUpdate;
 
@@ -129,6 +131,8 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
             edt_priceFood = dialog.findViewById(R.id.edt_priceFood);
             edt_noteFood = dialog.findViewById(R.id.edt_noteFood);
             spn_category = dialog.findViewById(R.id.spn_category);
+            edt_time = dialog.findViewById(R.id.edt_time);
+            edt_quantity = dialog.findViewById(R.id.edt_quantity);
             img_food = dialog.findViewById(R.id.img_food);
 
             image1 = "https://firebasestorage.googleapis.com/v0/b/duan-oder-doan.appspot.com/o/vdfood.png?alt=media&token=425bc41a-426c-477b-99f8-b2efa36ebc40";
@@ -157,7 +161,7 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Get list faild!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "!", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -167,17 +171,19 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
                 String priceFood = edt_priceFood.getText().toString();
                 String note = edt_noteFood.getText().toString();
                 String category = spn_category.getSelectedItem().toString();
+                String time = edt_time.getText().toString();
+                String quantity = edt_quantity.getText().toString();
                 id = id+1;
 
 
                 if (nameFood.isEmpty()) {
-                    edt_nameFood.setError("Name Category is required");
+                    edt_nameFood.setError("Nhập tên sản phẩm");
                     edt_nameFood.requestFocus();
                     return;
                 }
 
                 if (priceFood.isEmpty()) {
-                    edt_priceFood.setError("Name Category is required");
+                    edt_priceFood.setError("Nhập giá sản phẩm");
                     edt_priceFood.requestFocus();
                     return;
                 }
@@ -185,7 +191,7 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
                 sanPhamList.clear();
                 adapter.notifyDataSetChanged();
 
-                sanPham = new SanPham(id,category, image1, nameFood, priceFood, note);
+                sanPham = new SanPham(id,category, image1, nameFood, priceFood, note,time,quantity);
                 FirebaseDatabase.getInstance().getReference("Foods")
                         .child(String.valueOf(id))
                         .setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -254,7 +260,7 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Get list faild!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Lỗi!", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -302,17 +308,20 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
         dialog.findViewById(R.id.btn_save).setOnClickListener(view1 -> {
             String nameFood = edt_nameFoodUpdate.getText().toString();
             String priceFood = edt_priceFoodUpdate.getText().toString();
+            String time = edt_time.getText().toString();
+            String quantity = edt_quantity.getText().toString();
             String note = edt_noteFoodUpdate.getText().toString();
+
             String category = spn_categoryUpdate.getSelectedItem().toString();
 
             if (nameFood.isEmpty()) {
-                edt_nameFood.setError("Name Category is required");
+                edt_nameFood.setError("Nhập tên sản phẩm");
                 edt_nameFood.requestFocus();
                 return;
             }
 
             if (priceFood.isEmpty()) {
-                edt_priceFood.setError("Name Category is required");
+                edt_priceFood.setError("Nhập giá sản phẩm");
                 edt_priceFood.requestFocus();
                 return;
             }
@@ -320,7 +329,7 @@ public class Frag_add_food  extends Fragment implements Adapter_Food_Admin.Callb
             sanPhamList.clear();
             adapter.notifyDataSetChanged();
 
-            SanPham sanPham1 = new SanPham(sanPham.getId(), category, image2, nameFood, priceFood, note);
+            SanPham sanPham1 = new SanPham(sanPham.getId(), category, image2, nameFood, priceFood, note, time,quantity);
             FirebaseDatabase.getInstance().getReference("Foods")
                     .child(String.valueOf(sanPham1.getId()))
                     .setValue(sanPham1).addOnCompleteListener(new OnCompleteListener<Void>() {

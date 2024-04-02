@@ -60,7 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Cập nhật"
-        android:textColor="#fff"
         android:background="@drawable/border"/>
 
 </LinearLayout>

@@ -74,23 +74,23 @@ public class Adapter_Detailed_Invoice_Shipper extends RecyclerView.Adapter<View_
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference = database.getReference("Food_Detailed_Invoices");
             reference.child(String.valueOf(hoaDonChiTietAdmin.getId())).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                Food_HoaDonChiTiet foodHoaDonChiTiet = dataSnapshot.getValue(Food_HoaDonChiTiet.class);
-                                food_hoaDonChiTietList.add(foodHoaDonChiTiet);
-                                Collections.reverse(food_hoaDonChiTietList);
-                            }
-                            adapter.notifyDataSetChanged();
-                            recyclerView.setAdapter(adapter);
-                        }
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Food_HoaDonChiTiet foodHoaDonChiTiet = dataSnapshot.getValue(Food_HoaDonChiTiet.class);
+                        food_hoaDonChiTietList.add(foodHoaDonChiTiet);
+                        Collections.reverse(food_hoaDonChiTietList);
+                    }
+                    adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
+                }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(v.getContext(), "Lấy danh sách không thành công!", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(v.getContext(), "Lấy danh sách không thành công!", Toast.LENGTH_LONG).show();
+                }
+            });
 
 //            tv_phone.setOnLongClickListener(new View.OnLongClickListener() {
 //                @Override
@@ -105,9 +105,9 @@ public class Adapter_Detailed_Invoice_Shipper extends RecyclerView.Adapter<View_
         });
 
         holder.tvStatus.setText(hoaDonChiTietAdmin.getStatus());
-        if (holder.tvStatus.getText().toString().equals("Confirm")) {
+        if (holder.tvStatus.getText().toString().equals("Shipping")) {
             holder.tvStatus.setOnClickListener(v ->{
-                String status = "Doing";
+                String status = "Done";
                 hoaDonChiTietAdminList.clear();
                 notifyDataSetChanged();
                 HoaDonChiTietAdmin hoaDonChiTietAdmin1 = new HoaDonChiTietAdmin(hoaDonChiTietAdmin.getId(), hoaDonChiTietAdmin.getDate(), hoaDonChiTietAdmin.getSum_Price(), hoaDonChiTietAdmin.getName(), hoaDonChiTietAdmin.getPhone(), hoaDonChiTietAdmin.getAddress(), status);
@@ -130,7 +130,7 @@ public class Adapter_Detailed_Invoice_Shipper extends RecyclerView.Adapter<View_
         if (holder.tvStatus.getText().toString().equals("Shipping")) {
             holder.line_item1.setBackgroundResource(R.drawable.a_shipping);
             holder.tvStatus.setOnClickListener(v ->{
-                String status = "Hoàn thành";
+                String status = "Done";
                 hoaDonChiTietAdminList.clear();
                 notifyDataSetChanged();
                 HoaDonChiTietAdmin hoaDonChiTietAdmin1 = new HoaDonChiTietAdmin(hoaDonChiTietAdmin.getId(), hoaDonChiTietAdmin.getDate(), hoaDonChiTietAdmin.getSum_Price(), hoaDonChiTietAdmin.getName(), hoaDonChiTietAdmin.getPhone(), hoaDonChiTietAdmin.getAddress(), status);
@@ -146,7 +146,7 @@ public class Adapter_Detailed_Invoice_Shipper extends RecyclerView.Adapter<View_
 
             });
         }
-        if (holder.tvStatus.getText().toString().equals("Hoàn thành")) {
+        if (holder.tvStatus.getText().toString().equals("Done")) {
             holder.line_item1.setBackgroundResource(R.drawable.a_done);
             holder.tvStatus.setBackgroundResource(R.drawable.border2);
         }
@@ -164,3 +164,4 @@ public class Adapter_Detailed_Invoice_Shipper extends RecyclerView.Adapter<View_
         notifyDataSetChanged();
     }
 }
+

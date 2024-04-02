@@ -105,7 +105,7 @@ public class StatisticalManageActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_check).setOnClickListener(v ->{
             if (tvFromDate.getText().toString().equals("Từ ngày") || tvToDate.getText().toString().equals("Đến ngày")) {
-                Toast.makeText(this, "Please select a date!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Hãy chọn ngày!", Toast.LENGTH_SHORT).show();
                 return;
             }
             sum2 = 0;
@@ -148,7 +148,7 @@ public class StatisticalManageActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(StatisticalManageActivity.this, "Lấy danh sách không thành công!", Toast.LENGTH_LONG).show();
+                Toast.makeText(StatisticalManageActivity.this, "Lỗi thất bại!", Toast.LENGTH_LONG).show();
             }
         });
 

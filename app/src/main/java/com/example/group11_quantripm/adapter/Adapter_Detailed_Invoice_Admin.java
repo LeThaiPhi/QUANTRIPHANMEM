@@ -91,13 +91,23 @@ public class Adapter_Detailed_Invoice_Admin extends RecyclerView.Adapter<View_Ho
                 }
             });
 
+//            tv_phone.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View view) {
+//                    Intent i = new Intent(Intent.ACTION_CALL);
+//                    i.setData(Uri.parse("tel:"+hoaDonChiTietAdmin.getPhone()));
+//                    v.getContext().startActivity(i);
+//                    return false;
+//                }
+//            });
+
             dialog.show();
         });
 
         holder.tvStatus.setText(hoaDonChiTietAdmin.getStatus());
-        if (holder.tvStatus.getText().toString().equals("Confirm")) {
+        if (holder.tvStatus.getText().toString().equals("Doing")) {
             holder.tvStatus.setOnClickListener(v ->{
-                String status = "Doing";
+                String status = "Shipping";
                 hoaDonChiTietAdminList.clear();
                 notifyDataSetChanged();
                 HoaDonChiTietAdmin hoaDonChiTietAdmin1 = new HoaDonChiTietAdmin(hoaDonChiTietAdmin.getId(), hoaDonChiTietAdmin.getDate(), hoaDonChiTietAdmin.getSum_Price(), hoaDonChiTietAdmin.getName(), hoaDonChiTietAdmin.getPhone(), hoaDonChiTietAdmin.getAddress(), status);
@@ -117,10 +127,10 @@ public class Adapter_Detailed_Invoice_Admin extends RecyclerView.Adapter<View_Ho
             holder.line_item1.setBackgroundResource(R.drawable.a_doing);
             holder.tvStatus.setBackgroundResource(R.drawable.border2);
         }
-        if (holder.tvStatus.getText().toString().equals("Giao hàng")) {
+        if (holder.tvStatus.getText().toString().equals("Done")) {
             holder.line_item1.setBackgroundResource(R.drawable.a_shipping);
             holder.tvStatus.setOnClickListener(v ->{
-                String status = "Hoàn thành";
+                String status = "Hoàn thành ";
                 hoaDonChiTietAdminList.clear();
                 notifyDataSetChanged();
                 HoaDonChiTietAdmin hoaDonChiTietAdmin1 = new HoaDonChiTietAdmin(hoaDonChiTietAdmin.getId(), hoaDonChiTietAdmin.getDate(), hoaDonChiTietAdmin.getSum_Price(), hoaDonChiTietAdmin.getName(), hoaDonChiTietAdmin.getPhone(), hoaDonChiTietAdmin.getAddress(), status);
@@ -136,7 +146,7 @@ public class Adapter_Detailed_Invoice_Admin extends RecyclerView.Adapter<View_Ho
 
             });
         }
-        if (holder.tvStatus.getText().toString().equals("Hoàn thành")) {
+        if (holder.tvStatus.getText().toString().equals("Done")) {
             holder.line_item1.setBackgroundResource(R.drawable.a_done);
             holder.tvStatus.setBackgroundResource(R.drawable.border2);
         }
@@ -153,3 +163,4 @@ public class Adapter_Detailed_Invoice_Admin extends RecyclerView.Adapter<View_Ho
         notifyDataSetChanged();
     }
 }
+

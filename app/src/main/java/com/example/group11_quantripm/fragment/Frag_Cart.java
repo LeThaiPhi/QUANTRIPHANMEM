@@ -111,7 +111,7 @@ public class Frag_Cart extends Fragment implements Adapter_Receipt_User.Callback
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getContext(),"User address updated!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(),"Cập nhật địa chỉ thành công!", Toast.LENGTH_LONG).show();
                                     dialog.dismiss();
                                 }
                             }
@@ -122,7 +122,7 @@ public class Frag_Cart extends Fragment implements Adapter_Receipt_User.Callback
 
         view.findViewById(R.id.line_checkout).setOnClickListener(v ->{
             if (address_user.length()<1) {
-                Toast.makeText(getContext(), "Add address!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Thêm địa chỉ!", Toast.LENGTH_LONG).show();
                 return;
             }
             id = id+1;
@@ -179,7 +179,7 @@ public class Frag_Cart extends Fragment implements Adapter_Receipt_User.Callback
                         });
             }
 
-            HoaDonChiTietAdmin hoaDonChiTietAdmin = new HoaDonChiTietAdmin(id1, mydate, tv_sumPrice.getText().toString(),name_user, phone_user,address_user,"Hoàn thành");
+            HoaDonChiTietAdmin hoaDonChiTietAdmin = new HoaDonChiTietAdmin(id1, mydate, tv_sumPrice.getText().toString(),name_user, phone_user,address_user,"Doing");
             FirebaseDatabase.getInstance().getReference("Detailed_Invoices")
                     .child(String.valueOf(id1))
                     .setValue(hoaDonChiTietAdmin).addOnCompleteListener(new OnCompleteListener<Void>() {

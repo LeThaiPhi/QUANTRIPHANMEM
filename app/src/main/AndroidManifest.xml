@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.group11_quantripm">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Group11_QuanTriPM"
         tools:targetApi="31">
+        <activity
+            android:name=".ThongKeUser"
+            android:exported="false" />
         <activity
             android:name=".PhoneUser"
             android:exported="false" />

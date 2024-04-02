@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Chia sẽ"
-        android:textColor="#fff"
         android:background="@drawable/border"/>
 
 </LinearLayout>

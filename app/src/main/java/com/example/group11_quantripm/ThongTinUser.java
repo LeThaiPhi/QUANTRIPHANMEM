@@ -1,19 +1,23 @@
 package com.example.group11_quantripm;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ActivityOptions;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.group11_quantripm.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -74,6 +78,14 @@ public class ThongTinUser extends AppCompatActivity {
             Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
             startActivity(intent, bundle);
         });
+
+        findViewById(R.id.ln_statistical).setOnClickListener(v ->{
+            Intent intent = new Intent(this, ThongKeUser.class);
+            Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+            startActivity(intent, bundle);
+        });
+
+
 
 
         findViewById(R.id.ln_information).setOnClickListener(v ->{
